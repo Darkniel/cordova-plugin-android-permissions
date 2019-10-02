@@ -163,7 +163,8 @@ function deprecated(name) {
 
 Permissions.prototype = {
     checkPermission: function(permission, successCallback, errorCallback) {
-        successCallback( {hasPermission: true} );
+        // successCallback( {hasPermission: true} );
+        cordova.exec(successCallback, errorCallback, permissionsName, 'checkPermission', [permission]);
     },
     requestPermission: function(permission, successCallback, errorCallback) {
         if (typeof permission === "function") {

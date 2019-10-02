@@ -38,6 +38,15 @@
 
   <!-- ios -->
   <platform name="ios">
+    <config-file target="config.xml" parent="/widget">
+      <feature name="Hello">
+        <param name="ios-package" value="Permissions" />
+      </feature>
+    </config-file>
+
+    <header-file src="src/ios/Permissions.h" target-dir="Permissions"/>
+    <source-file src="src/ios/Permissions.m" target-dir="Permissions"/>
+
     <js-module src="www/permissions-dummy.js" name="Permissions">
       <clobbers target="cordova.plugins.permissions" />
     </js-module>
