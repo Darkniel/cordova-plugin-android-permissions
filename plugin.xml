@@ -39,7 +39,7 @@
   <!-- ios -->
   <platform name="ios">
     <config-file target="config.xml" parent="/widget">
-      <feature name="Hello">
+      <feature name="Permissions">
         <param name="ios-package" value="Permissions" />
       </feature>
     </config-file>

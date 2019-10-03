@@ -1,24 +1,24 @@
-#import "Permisions.h"
-
+#import "Permissions.h"
+#import <AVFoundation/AVCaptureSession.h>
 @implementation Permisions
 
 - (void)checkPermission:(CDVInvokedUrlCommand*)command
 {
     NSString* mehtod = [[command arguments] objectAtIndex:0];
 
-    if (pictureOptions.sourceType == UIImagePickerControllerSourceTypeCamera) {
+    //if (pictureOptions.sourceType == UIImagePickerControllerSourceTypeCamera) {
             [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted)
              {
                  if(!granted)
                  {
-                    [weakSelf sendNoPermissionResult:command.callbackId];
+                    [self sendNoPermissionResult:command.callbackId];
                  } else {
-                    [weakSelf sendOkPermissionResult:command.callbackId];
+                    [self sendOkPermissionResult:command.callbackId];
                  }
              }];
-        } else {
-                    [weakSelf sendOkPermissionResult:command.callbackId];
-        }
+        //} else {
+                    //[self sendOkPermissionResult:command.callbackId];
+        //}
     // NSString* msg = [NSString stringWithFormat: @"Hello, %@", name];
 
     // CDVPluginResult* result = [CDVPluginResult
@@ -34,7 +34,7 @@
                                 messageAsString:@"has no access to camera"];   // error callback expects string ATM
 
     // [self.commandDelegate sendPluginResult:result callbackId:callbackId];
-    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+    [self.commandDelegate sendPluginResult:result callbackId:callbackId];
 
 }
 - (void)sendOkPermissionResult:(NSString*)callbackId
